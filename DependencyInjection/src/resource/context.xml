@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="health" class="com.xworkz.spring.component.Health">
+		<property name="bloodGroop" value="o+"></property>
+		<property name="sugarLevel" value="119"></property>
+	</bean>
+	<bean id="driver" class="com.xworkz.spring.component.Driver">
+		<constructor-arg value="KA13  20091001067"></constructor-arg>
+		<property name="exp" value="15"></property>
+		<property name="Health" ref="health"></property>
+	</bean>
+	
+	<bean id="transportName" class="java.lang.String" >
+	<constructor-arg value="VRL"></constructor-arg>
+	</bean>
+	
+	<bean id="transportTypeGoods" class="java.lang.String" >
+	<constructor-arg value="Goods"></constructor-arg>
+	</bean>
+	
+	<bean id="transportTypePassenger" class="java.lang.String" >
+	<constructor-arg value="Passenger"></constructor-arg>
+	</bean>
+
+	<bean id="transportGoods" class="com.xworkz.spring.component.Transport">
+		<constructor-arg ref="transportName"></constructor-arg>
+		<property name="type" ref="transportTypeGoods"></property>
+		<constructor-arg ref="driver"></constructor-arg>
+	</bean>
+	
+	<bean id="transportPassenger" class="com.xworkz.spring.component.Transport">
+		<constructor-arg ref="transportName"></constructor-arg>
+		<property name="type" ref="transportTypePassenger"></property>
+		<constructor-arg ref="driver"></constructor-arg>
+	</bean>
+</beans>
